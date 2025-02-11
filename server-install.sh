@@ -1,12 +1,12 @@
 #!/bin/bash
 
 MY_SOFTS=/usr/local/mysofts
-ELAS=elasticsearch-7.6.2
-ELAS_TAR=elasticsearch-7.6.2-linux-x86_64.tar.gz
-LOGS=logstash-7.6.2
-LOGS_TAR=logstash-7.6.2.tar.gz
-KIBANA=kibana-7.6.2
-KIBANA_TAR=kibana-7.6.2-linux-x86_64.tar.gz
+ELAS=elasticsearch-8.17.1
+ELAS_TAR=elasticsearch-8.17.1-linux-x86_64.tar.gz
+LOGS=logstash-8.17.1
+LOGS_TAR=logstash-8.17.1.tar.gz
+KIBANA=kibana-8.17.1
+KIBANA_TAR=kibana-8.17.1-linux-x86_64.tar.gz
 ELAS_DATA=/data/es-data
 ELAS_LOG=/var/log/elasticsearch
 
@@ -40,10 +40,10 @@ then
     rm -rf $KIBANA_TAR
 fi
 
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-linux-x86_64.tar.gz
-tar -zxvf elasticsearch-7.6.2-linux-x86_64.tar.gz -C $MY_SOFTS/
-cd $MY_SOFTS/elasticsearch-7.6.2/
-cat >> /usr/local/mysofts/elasticsearch-7.6.2/config/elasticsearch.yml <<"EOF"
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.17.1-linux-x86_64.tar.gz
+tar -zxvf elasticsearch-8.17.1-linux-x86_64.tar.gz -C $MY_SOFTS/
+cd $MY_SOFTS/elasticsearch-8.17.1/
+cat >> /usr/local/mysofts/elasticsearch-8.17.1/config/elasticsearch.yml <<"EOF"
 cluster.name: myCluster
 node.name: node-1
 path.data: /data/es-data
@@ -57,11 +57,11 @@ EOF
 
 
 cd $MY_SOFTS
-wget https://artifacts.elastic.co/downloads/logstash/logstash-7.6.2.tar.gz
-tar -zxvf logstash-7.6.2.tar.gz -C $MY_SOFTS/
-cd $MY_SOFTS/logstash-7.6.2/
+wget https://artifacts.elastic.co/downloads/logstash/logstash-8.17.1.tar.gz
+tar -zxvf logstash-8.17.1.tar.gz -C $MY_SOFTS/
+cd $MY_SOFTS/logstash-8.17.1/
 touch elk.conf
-cat >> /usr/local/mysofts/logstash-7.6.2/elk.conf <<"EOF"
+cat >> /usr/local/mysofts/logstash-8.17.1/elk.conf <<"EOF"
 input { 
     stdin { }
 }
@@ -72,10 +72,10 @@ output {
 EOF
 
 cd $MY_SOFTS
-wget https://artifacts.elastic.co/downloads/kibana/kibana-7.6.2-linux-x86_64.tar.gz
-tar -zxvf kibana-7.6.2-linux-x86_64.tar.gz
-cd kibana-7.6.2-linux-x86_64/
-cat >> /usr/local/mysofts/kibana-7.6.2-linux-x86_64/config/kibana.yml <<"EOF"
+wget https://artifacts.elastic.co/downloads/kibana/kibana-8.17.1-linux-x86_64.tar.gz
+tar -zxvf kibana-8.17.1-linux-x86_64.tar.gz
+cd kibana-8.17.1-linux-x86_64/
+cat >> /usr/local/mysofts/kibana-8.17.1-linux-x86_64/config/kibana.yml <<"EOF"
 server.port: 5601
 server.host: "0.0.0.0"
 elasticsearch.hosts: ["http://127.0.0.1:9200/"]

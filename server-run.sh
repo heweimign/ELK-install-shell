@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cd /usr/local/mysofts/elasticsearch-7.6.2
+cd /usr/local/mysofts/elasticsearch-8.17.1
 bin/elasticsearch &
 
-cd /usr/local/mysofts/kibana-7.6.2-linux-x86_64
+cd /usr/local/mysofts/kibana-8.17.1-linux-x86_64
 bin/kibana &

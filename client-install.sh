@@ -1,8 +1,8 @@
 #!/bin/bash
 
 MY_SOFTS=/usr/local/mysofts
-LOGS=logstash-7.6.2
-LOGS_TAR=logstash-7.6.2.tar.gz
+LOGS=logstash-8.17.1
+LOGS_TAR=logstash-8.17.1.tar.gz
 
 cd $MY_SOFTS
 if [ -e $LOGS_TAR ]
@@ -14,11 +14,11 @@ then
     rm -rf $LOGS
 fi
 
-wget https://artifacts.elastic.co/downloads/logstash/logstash-7.6.2.tar.gz
-tar -zxvf logstash-7.6.2.tar.gz -C $MY_SOFTS/
-cd $MY_SOFTS/logstash-7.6.2/
+wget https://artifacts.elastic.co/downloads/logstash/logstash-8.17.1.tar.gz
+tar -zxvf logstash-8.17.1.tar.gz -C $MY_SOFTS/
+cd $MY_SOFTS/logstash-8.17.1/
 touch elk.conf
-cat >> /usr/local/mysofts/logstash-7.6.2/elk.conf <<"EOF"
+cat >> /usr/local/mysofts/logstash-8.17.1/elk.conf <<"EOF"
 input { 
     stdin { } 
     file{
